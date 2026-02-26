@@ -1,5 +1,5 @@
 # Telerilevamento_2026
-Code developed during Duccio Rocchini's course, University of Bologna
+Code developed during Duccio Rocchini's course, University of Bologna 📡
 
 
 # cosa è?
