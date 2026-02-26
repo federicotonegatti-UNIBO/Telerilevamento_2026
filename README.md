@@ -1,5 +1,7 @@
 # Telerilevamento_2026
 Code developed during Duccio Rocchini's course, University of Bologna 📡
+<img width="1148" height="861" alt="image" src="https://github.com/user-attachments/assets/00d715ac-2fe7-491e-89bc-df545d9f82eb" />
+
 
 
 # cosa è?
