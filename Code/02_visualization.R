@@ -60,3 +60,45 @@ dev.off()
 im.multiframe(1,2)
 plot(b2, col=clgray)
 plot(b2, col=inferno(100))
+
+#importo banda 3 sentinel, verde
+im.list()
+b3<-im.import("sentinel.dolomites.b3.tif" )
+View(b3)
+plot(b3, col=plasma(100))
+
+#importo banda 4, rossi
+b4<-im.import("sentinel.dolomites.b4.tif")
+plot(b4, col=magma(100))
+clgray <- colorRampPalette(c("black", "darkgray","dimgray"))(100)
+plot(b4, col=clgray)
+
+#importo b8 near-infrared
+b8<-im.import("sentinel.dolomites.b8.tif")
+plot(b4, col=magma(100))
+
+#esercizio: multiframe with 4 band, and legends in line with the wave lenght
+
+im.multiframe(2,2)
+cl_blue <- colorRampPalette(c("royalblue4", "royalblue2","royalblue"))(100)
+cl_green <- colorRampPalette(c("green4", "green2","green"))(100)
+cl_red <- colorRampPalette(c("firebrick4", "firebrick2","firebrick1"))(100)
+cl_near <- colorRampPalette(c("gold4", "gold2","gold"))(100)
+
+
+plot(b2, col=cl_blue)
+plot(b3, col=cl_green)
+plot(b4, col=cl_red)
+plot(b8, col=cl_near)
+
+#stack: comporre assieme l'immagine satellitare
+sentinel<-c(b2,b3,b4,b8)
+plot(sentinel, col=inferno(100))
+
+#estraggo un layer dai 4 di sentinel (b2,b3,b4,b8), uso il $
+names(sentinel)
+plot(sentinel$file12ec6316315e)
+
+#subset: uso le doppie parentesi quadre per le matrici (raster)
+plot(sentinel[[4]])
+plot(sentinel[[2]])
