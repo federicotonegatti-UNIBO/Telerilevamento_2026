@@ -102,3 +102,83 @@ plot(sentinel$file12ec6316315e)
 #subset: uso le doppie parentesi quadre per le matrici (raster)
 plot(sentinel[[4]])
 plot(sentinel[[2]])
+
+
+#ROCCHINI
+library(terra)
+library(imageRy)
+library(ggplot2)
+library(patchwork)
+
+im.list()
+b2<-im.import("sentinel.dolomites.b2.tif")
+b3<-im.import("sentinel.dolomites.b3.tif")
+b4<-im.import("sentinel.dolomites.b4.tif")
+b8<-im.import("sentinel.dolomites.b8.tif")
+
+#stack: ognuna delle bande è elemento di un vettore
+sentinel<-c(b2,b3,b4,b8)
+
+#layer1=b2 blue
+#l2=b3 green
+#l3=b4 red
+#l4=b8 near infrared  NIR
+plot(sentinel)
+
+#abbiamo creato una immagine impilata, con 4 bande una sopra l'altra
+#lo stack è simile al multiframe
+
+plot(sentinel[[4]]) #permette di vedere solo un layer, il quale si chiama [4]
+
+#installiamo patchwork: permette di fare i grafici con ggplot
+#patchwork funziona solo con ggplot
+# possiamo mettere grafici accanto, uno sopra l'altro etc
+install.packages("patchwork")
+
+#ggplot2 permette di fare grafici in R
+#faccio grafico banda 8 con ggplot
+
+p1<-im.ggplot(b8)
+p2<-im.ggplot(b4)
+p1+p2
+
+#4 possibilità per multiframe 1) parfrow, 2)im.multiframe, 3) stack, 4) im.ggplot
+
+#RGB plotting. ho le 4 bande. metto per ogni colore la banda di riferimento (il livello del layer!)
+im.plotRGB(sentinel, r=3, g=2, b=1) # è una immagine a colori naturali, natural colours!
+
+#abbiamo infatti inserito solo le bande del visibile: in questo caso è una img poco chiara ( nostri occhi vedono poco)
+#cerco di mettere anche il NIR in modo da vedere meglio
+im.plotRGB(sentinel, r=4, g=2, b=1) #NIR permette di vedere le parti vegetate
+b<-im.plotRGB(sentinel, r=4, g=3, b=2) #così si spostano tutti i layer di una posizione
+#abbiamo creato una immagine di falsi colori
+a<-im.plotRGB(sentinel, r=3, g=4, b=2)
+#in realtà quello che importa in questa immagine è dove metto il NIR, gli altri rgb sono simili
+#le bande del visibile sono molto correlate fra loro!
+
+a<-im.plotRGB(sentinel, r=3, g=4, b=2)
+b<-im.plotRGB(sentinel, r=4, g=3, b=2)
+mar<-c(a,b)
+plot(mar)
+
+im.multiframe(1,2)
+im.plotRGB(sentinel, r=3, g=4, b=2)
+im.plotRGB(sentinel, r=4, g=3, b=2)
+
+#vedere le correlazioni
+pairs(sentinel)
+
+im.plotRGB(sentinel, r=2, g=3, b=1)
+im.plotRGB(sentinel, r=2, g=3, b=4)
+
+#plotting RGB via terra: si usa lo stretch
+plotRGB(sentinel, r=4, g=3, b=2, stretch="lin") #stretch lineare: più bella e chiara
+plotRGB(sentinel, r=4, g=3, b=2, stretch="hist") #stretch istogramma: utile per discriminare molto tra vari elementi nel paesaggio
+
+im.multiframe (1,2)
+plotRGB(sentinel, r=4, g=3, b=2, stretch="lin") 
+plotRGB(sentinel, r=4, g=3, b=2, stretch="hist")
+
+im.ggplot(sentinel)
+plot(b2)
+plot(b8)
