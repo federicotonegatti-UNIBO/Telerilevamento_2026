@@ -179,6 +179,74 @@ im.multiframe (1,2)
 plotRGB(sentinel, r=4, g=3, b=2, stretch="lin") 
 plotRGB(sentinel, r=4, g=3, b=2, stretch="hist")
 
+
+library(terra)
+library(imageRy)
+library(viridis)
+im.list()
+
+mato1992<- im.import("matogrosso_l5_1992219_lrg.jpg")
+mato1992<-flip(mato1992) #per ribaltare img, che a volt in R il nord è capovolto a sud!
+mato1992 #ha tre bande:l1=NIR, l2=red, l3=green
+im.plotRGB(mato1992,r=1, g=2, b=3) #metto NIR nel rosso
+im.plotRGB(mato1992,r=2, g=1, b=3) #metto il NIR nel verde
+mato1992_plot<-im.plotRGB(mato1992,r=2, g=3, b=1)  #faccio diventare giallo il suolo nudo
+
+mato2006<- im.import("matogrosso_ast_2006209_lrg.jpg")
+mato2006<-flip(mato2006)
+mato2006_plot<-im.plotRGB(mato2006, r=1, g=2, b=3)
+
+#multiframe
+mato1992_plot<-im.plotRGB(mato1992,r=2, g=3, b=1)
+mato2006_plot<-im.plotRGB(mato2006, r=1, g=2, b=3)
+im.multiframe(mato1992_plot, mato2006_plot)
+im.multiframe(1,2)
+mato1992_plot<-im.plotRGB(mato1992,r=1, g=2, b=3)
+mato2006_plot<-im.plotRGB(mato2006, r=1, g=2, b=3)
+
+#DVI 0-100 NIR-red
+#NIR= 100 red=0
+#dvi_t0=NIR-red=100-0=100 pianta in salute
+#dvi_t1=NIR-red=40-10=30 pianta in sofferenza
+
+dvi1992<-mato1992[[1]]-mato1992[[2]]   #faccio subset sulla prima banda [1]
+dvi2006<-mato2006[[1]]-mato2006[[2]] 
+
+#plotto la dvi
+plot(dvi1992)
+plot(dvi2006) #nel 2006 maggior eintervento umano, vedo meno verde e più blu (suolo nudo)
+
+plot(dvi1992, col=inferno(100))
+
+#DVI with different radiometric resolution
+#8bit , range da 0 a 255
+#dvi max=nir-red= 255-0=255
+#dvi min= 0 - 255=-255
+#con una immagine a 8 bit, ovvero 256 valori, ho un range da -255 a 255
+
+#2bit= 2^2 --> variazione da 0 a 3
+# dvi max con 2 bit= 3, mente minimo -3
+
+#non posso comparare dvi di immagini a 2bit e  8bit! devo riscalare
+#possiamo utilizzare NDVI: per ovviare al problema della risoluzione radiometrica, si fa una standardizzazione delle variabili (normalizzaizone, ma a rocchini sta sulle palle sta roba)
+
+#NDVI-> (NIR-red)/(nir+red) standardizzo sulla somma
+# ndvi max=(255-0)/(255-0)=1
+#ndvi min= (0-255)/(0+255= = -1
+
+ndvi1992<- dvi1992/(mato1992[[1]]+mato1992[[2]])
+ndvi2006<- dvi2006/(mato2006[[1]]+mato2006[[2]])
+
+im.multiframe(2,2)
+plot(dvi1992, col=inferno(100))
+plot(dvi2006, col=inferno(100))
+
+
+a<-plot(ndvi1992, col=inferno(100))
+b<-plot(ndvi2006, col=inferno(100))
+c<-stack(a,b)
+plot(c)
+
 im.ggplot(sentinel)
 plot(b2)
 plot(b8)
