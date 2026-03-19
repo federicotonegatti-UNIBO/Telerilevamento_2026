@@ -55,6 +55,7 @@ dev.off()
 diff<-g2015-g2000 #ricorda che puoi farlo anche attraverso la differenza tra gli oggetti
 plot(diff)
 
+dove vedo rosso, sono t alte nel 2000, nel verde quelle nel 2005 e nel blu quelle del 2015! così capiamo
 sum<-g2015+g2010 #posso fare anche la somma, anche se non serve a tanto in sto caso
 plot(sum)
 
