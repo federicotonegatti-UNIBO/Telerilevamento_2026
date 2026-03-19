@@ -1,1 +1,27 @@
+#analisi multi-temporale
+library(terra)
+library(imageRy)         
 
+im.list()         
+EN_01<-im.import("EN_01.png" )
+EN_01<-flip(EN_01)
+plot(EN_01)
+EN_01 #situazione aria in Italia prima del lockdown covid 2020
+
+EN_13<-im.import("EN_13.png" )
+EN_13<-flip(EN_13)
+plot(EN_13)
+
+tempo<-c(EN_13, EN_01)
+plot(tempo)
+
+#plot immagini una sopra l'altra
+
+library(viridis)
+par(mfrow=c(2,1))
+plot(EN_01, col=inferno(100))
+plot(EN_13, col=inferno(100))
+
+#differencing
+ENdif<- EN_01[[1]]-EN_13[[1]]
+plot(ENdif)
