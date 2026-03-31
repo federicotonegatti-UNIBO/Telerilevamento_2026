@@ -1,2 +1,45 @@
 #04_multitemporal_analysis_TEMP.R
 
+#al momento abbiamo solo visualizzato immagini, e visto le differenze tra pixel
+
+library(terra)
+library(imageRy)
+library(viridis)
+library(ggplot2)
+
+im.list()
+
+#NDVI data
+NDVI<-im.import("Sentinel2_NDVI_2020") #sono 4 layer
+par(mfrow=c(2,2))
+plot(NDVI[[1]], col=inferno(100)) 
+plot(NDVI[[2]], col=inferno(100))
+plot(NDVI[[3]], col=inferno(100))
+plot(NDVI[[4]], col=inferno(100))
+
+plot(NDVI) #in alternativa
+
+#faccio un istogramma
+hist(NDVI) 
+
+#pacchetto ggirdges converte una tabelle (frequenze) in un ridgeline plot
+install.packages("ggridges")
+im.ridgeline(NDVI, scale=1, palette="inferno") 
+#distribuzione frequenze (tanti piccoli istorgammi che vengono uniti da una funzione kernel)
+#ho un solo grafico invece che 4, perchè gni volta la funzione sovrascrive con l'img successiva! devo cambiare i nomi
+
+#cambio il nome delle variabili
+names(NDVI) <-c("02_feb", "05_may", "08_aug", "11_nov")
+NDVI
+im.ridgeline(NDVI, scale=1, palette="mako") #ora posso procedere
+
+#pairs
+pairs(NDVI)
+
+plot(NDVI[[1]], NDVI[[2]])
+
+#ab line
+abline(0,1) #intercetta nell'origine, con m=1, quindi retta a 45 gradi
+
+plot(NDVI[[1]], NDVI[[2]], xlim=c(-0.3,0.9), ylim=c(-0.3,0.9)) #per cambiare il range di valori x e y sugli assi
+abline(0,1)
