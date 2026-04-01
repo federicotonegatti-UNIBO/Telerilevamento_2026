@@ -33,7 +33,7 @@ names(NDVI) <-c("02_feb", "05_may", "08_aug", "11_nov")
 NDVI
 im.ridgeline(NDVI, scale=1, palette="mako") #ora posso procedere
 
-#pairs
+#pairs: A matrix of scatterplots is produced.
 pairs(NDVI)
 
 plot(NDVI[[1]], NDVI[[2]])
