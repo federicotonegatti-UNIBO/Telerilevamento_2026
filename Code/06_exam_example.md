@@ -34,3 +34,13 @@ plot(sat[[2]])
 > + nota tre
 >
 > 
+
+faccio degli istogrammi
+
+```r
+par(mfrow=c(2,1))
+hist(values(sat[[1]]), main="istogramma 1", col="blue")
+hist(values(sat[[2]]), main="istogramma 1", col="red")
+```
+
+<img width="1898" height="1024" alt="image" src="https://github.com/user-attachments/assets/5f9c639a-ec0e-4f47-bdc4-d40492ae3d78" />
