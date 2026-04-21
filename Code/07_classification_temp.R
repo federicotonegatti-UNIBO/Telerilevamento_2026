@@ -37,3 +37,67 @@ ciao<-rast("dantersac_drone.jpg")
 plot(ciao)
 ciaoc<-im.classify(ciao, num_clusters = 3)
 
+#mato grosso example
+im.list()
+m2006<-im.import("matogrosso_ast_2006209_lrg.jpg")
+m1999<-im.import("matogrosso_l5_1992219_lrg.jpg")
+
+par(mfrow=c(1,2))
+plot(m1999)
+plot(m2006) 
+
+m1992c<-im.classify(m1999, seed=42, num_clusters = 2) #ci nasce una land cove map
+
+#metto dele label: creo una tabella dataframe e una label. viene usata la funzione levels
+levels(m1992c) <- data.frame(
+  value = c(1, 2),
+  label = c("Forest", "Human")
+)
+m1992c
+plot(m1992c)
+
+#img 20006
+m2006c<-im.classify(m2006, seed=42, num_clusters = 2)
+levels(m2006c) <- data.frame(
+  value = c(1, 2),
+  label = c("Forest", "Human")
+)
+m2006c
+plot(m2006c)
+
+par(mfrow=c(1,2))
+plot(m1992c)
+plot(m2006c)
+
+#procedo con un istogramma, con la funzione di imageRy
+#si chiama im.barplot: proviamo a scaricare lo scipt della funzione dal repo di imageRy
+#la richiamo con la funzione source()
+
+source("im.barplot.R")
+
+#oppure copio e incollolo script che trovo sul repo e lo faccio andare su R, così si salva!
+
+par(mfrow=c(2,1))
+im.barplot(m1992c)
+im.barplot(m2006c)
+
+#in alternativa, ci calcoliamo le frequenze dalle immagini, per ogni classe (frequenze dei pixel per classe)
+#dato che le freq sono sotto la colonna count, devo considerare solo quella con il $
+f1992<-freq(m1992c)
+#calcolo proporzione, e poi moltiplico * 100 per la percentuale
+prop1992<-f1992$count / ncell(m1992c)
+perc1992<-prop1992*100
+
+#faccio lo stesso pr il 2006
+f2006<-freq(m2006c)
+prop2006<-f2006$count / ncell(m2006c)
+perc2006<-prop2006*100
+perc2006 # la componente human è aumentata dal 17 al 45%
+
+#ora creo un dataframe per fare degli istorgammi
+tab<-data.frame(
+  class=c("Forest","Human"),
+  perc1992=c(83,17),
+  perc2006=c(45,55)
+)
+
