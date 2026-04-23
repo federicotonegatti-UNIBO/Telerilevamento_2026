@@ -101,3 +101,35 @@ tab<-data.frame(
   perc2006=c(45,55)
 )
 
+
+
+#ho creato una tabella con 3 colonne: la classe, % foresta o umano nel1992, e % nel 2006
+library(ggplot2)
+library(patchwork)
+tab
+
+#uso ggplot per fare grafico
+#funzione aes= estetiche, ovvero colore grafico, x e y del grafico)
+#voglio fare un istrogramma con classi sulla x, e % sulla y!
+#colori distinti per classe color=class.. ora abbiamo definito il grafico, ma non il TIPO di grafico che vogliamo
+#gli chiedo il tipo di grafico che voglio, ovvero barplot
+#funzione geom_bar definisce per barre (bar charts)
+# metto il + perchè ggplot è una somma di funzioni
+#in geom_bar devo definire la statistica (in questo caso idenity), e il riempimento delle barre
+
+#uso una funzione per mettere la y sulla stessa scala
+p1 <- ggplot(tab, aes(x=class, y=perc1992, color=class)) +  #structure
+  geom_bar(stat="identity", fill="white") + #bar plot
+  ylim(c(0,100))+ #limite asse y
+  theme(legend.position="none") + #tema: mi fa togliere in questo caso la legenda
+  theme_dark() #theme minimal(): sfondo bianco; theme_dark(): sfondo scuro
+  
+
+p2 <- ggplot(tab, aes(x=class, y=perc2006, color=class)) + 
+  geom_bar(stat="identity", fill="white") + #bar plot
+  ylim(c(0,100))
+
+#pacchetto patchwork, dialoga con ggplot: mi fa sommare gli oggetti..basta che sommo i due oggetti p1 e p2
+
+p1+p2 #i due grafici a barre sono paralleli
+
