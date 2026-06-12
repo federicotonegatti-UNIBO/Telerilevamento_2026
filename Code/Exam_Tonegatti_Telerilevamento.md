@@ -6,13 +6,14 @@ Ne consegue che la superficie del territorio è oggi prevalentemente priva di co
 
 ## Obiettivi di progetto
 L'obiettivo della ricerca è di individuare il cambiamento dei parametri geo-ecologici negli ultimi venti anni nel Nordeste Paraense.
+
 ## Metodologia e risultati
 La metodologia si basa su una analisi geo-ecologica basata su immagini satellitari, elaborate tramite il software open-source R. La tipologia di dati spaziali utilizzati è prevalentemente di tipo raster.
 
-### Script per scaricare immagini satellitare (2006, 2016, 2026) da GEE
+### Fonti immagini satellitari
 I dat satellitari necessari per l'analisi sono stati scaricati attraverso Google Earth Engine (GEE). Per l'esportazione delle immagini satellitari in formato raster (.TIFF), è stato utilizzato il codice in JavaScript presentato a lezione, modificato grazie all'aiuto dell'AI MS Copilot per replicare l'esportazione dell'immagine per gli anni 2006, 2016 e 2026.
 
-
+Segue lo script adottato per scaricare le immagini satellitari (2006, 2016, 2026) da GEE.
 ``` 
 function getComposite(collection, startDate, endDate) {
   return collection
