@@ -170,6 +170,13 @@ plot(p2006[[3]])
 ### barplot differenza NDVI
 
 
+### Creazione di una mappa di copertura del suolo attraverso la classificazione
+
+i seed sono...
+i culster sono i gruppi di pixel che intendiamo creare: nel nostro caso, ne bastano due, in modo da avere una separazione tra le aree deforestate e quelle in cui è presente foresta.
+
+#classificazione per creare una land cover map
+p2006_c<-im.classify(p2006, seed=42, num_clusters = 3) #ci nasce una land cover map
 
 
 
