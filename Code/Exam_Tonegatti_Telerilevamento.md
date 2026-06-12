@@ -10,25 +10,68 @@ L'obiettivo della ricerca è di individuare il cambiamento dei parametri geo-eco
 La metodologia si basa su una analisi geo-ecologica basata su immagini satellitari, elaborate tramite il software open-source R. La tipologia di dati spaziali utilizzati è prevalentemente di tipo raster.
 
 ### Script per scaricare immagini satellitare (2006, 2016, 2026) da GEE
-I dat satellitari necessari per l'analisi sono stati scaricati attraverso Google Earth Engine (GEE). Per l'esportazione delle immagini satellitari in formato raster (.TIFF), è stato utilizzato il codice in JavaScript presentato a lezione
+I dat satellitari necessari per l'analisi sono stati scaricati attraverso Google Earth Engine (GEE). Per l'esportazione delle immagini satellitari in formato raster (.TIFF), è stato utilizzato il codice in JavaScript presentato a lezione, modificato grazie all'aiuto dell'AI MS Copilot per replicare l'esportazione dell'immagine per gli anni 2006, 2016 e 2026.
 
 
 ``` 
-// ==============================================
-// Export to Google Drive
-// ==============================================
+function getComposite(collection, startDate, endDate) {
+  return collection
+    .filterBounds(geometry)
+    .filterDate(startDate, endDate)
+    .filter(ee.Filter.lt('CLOUD_COVER', 20))
+    .median()
+    .clip(geometry);
+}
+// 2006
+var img2006 = getComposite(
+  ee.ImageCollection('LANDSAT/LT05/C02/T1_L2'),
+  '2006-01-01', '2006-12-31'
+);
 
-// Export the median composite
+// 2016
+var img2016 = getComposite(
+  ee.ImageCollection('LANDSAT/LC08/C02/T1_L2'),
+  '2016-01-01', '2016-12-31'
+);
+
+// 2026
+var img2026 = getComposite(
+  ee.ImageCollection('LANDSAT/LC09/C02/T1_L2'),
+  '2026-01-01', '2026-12-31'
+);
+
 Export.image.toDrive({
-  image: composite.select(['B4', 'B3', 'B2']),  // Select RGB bands
-  description: 'Sentinel2_Median_Composite',
-  folder: 'GEE_exports',                        // Folder in Google Drive
-  fileNamePrefix: 'sentinel2_median_2020',
-  region: aoi,
-  scale: 10,                                    // Sentinel-2 resolution
+  image: img2006.select(['SR_B4', 'SR_B3', 'SR_B2']),
+  description: 'Landsat_2006',
+  folder: 'GEE_exports',
+  fileNamePrefix: 'landsat_2006',
+  region: geometry,
+  scale: 30,
   crs: 'EPSG:4326',
   maxPixels: 1e13
-}); ```
+});
+
+Export.image.toDrive({
+  image: img2016.select(['SR_B4', 'SR_B3', 'SR_B2']),
+  description: 'Landsat_2016',
+  folder: 'GEE_exports',
+  fileNamePrefix: 'landsat_2016',
+  region: geometry,
+  scale: 30,
+  crs: 'EPSG:4326',
+  maxPixels: 1e13
+});
+
+Export.image.toDrive({
+  image: img2026.select(['SR_B4', 'SR_B3', 'SR_B2']),
+  description: 'Landsat_2026',
+  folder: 'GEE_exports',
+  fileNamePrefix: 'landsat_2026',
+  region: geometry,
+  scale: 30,
+  crs: 'EPSG:4326',
+  maxPixels: 1e13
+});```
 
 ### Script per caricare immagini satellitari su R
 
