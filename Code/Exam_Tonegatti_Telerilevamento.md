@@ -15,61 +15,81 @@ I dat satellitari necessari per l'analisi sono stati scaricati attraverso Google
 
 Segue lo script adottato per scaricare le immagini satellitari (2006, 2016, 2026) da GEE.
 ``` 
-function getComposite(collection, startDate, endDate) {
-  return collection
-    .filterBounds(geometry)
-    .filterDate(startDate, endDate)
-    .filter(ee.Filter.lt('CLOUD_COVER', 20))
-    .median()
-    .clip(geometry);
+
+// ==============================================
+// Sentinel-2 Surface Reflectance - Cloud Masking and Visualization
+// https://developers.google.com/earth-engine/datasets/catalog/COPERNICUS_S2_SR_HARMONIZED
+// ==============================================
+
+// ==============================================
+// Function to mask clouds using the QA60 band
+// Bits 10 and 11 correspond to opaque clouds and cirrus
+// ==============================================
+function maskS2clouds(image) {
+  var qa = image.select('QA60');
+  var cloudBitMask = 1 << 10;
+  var cirrusBitMask = 1 << 11;
+
+  // Keep only pixels where both cloud and cirrus bits are 0
+  var mask = qa.bitwiseAnd(cloudBitMask).eq(0)
+               .and(qa.bitwiseAnd(cirrusBitMask).eq(0));
+
+  // Apply the cloud mask and scale reflectance values (0–10000 ➝ 0–1)
+  return image.updateMask(mask).divide(10000);
 }
-// 2006
-var img2006 = getComposite(
-  ee.ImageCollection('LANDSAT/LT05/C02/T1_L2'),
-  '2006-01-01', '2006-12-31'
-);
 
-// 2016
-var img2016 = getComposite(
-  ee.ImageCollection('LANDSAT/LC08/C02/T1_L2'),
-  '2016-01-01', '2016-12-31'
-);
+// ==============================================
+// Load and Prepare the Image Collection
+// ==============================================
 
-// 2026
-var img2026 = getComposite(
-  ee.ImageCollection('LANDSAT/LC09/C02/T1_L2'),
-  '2026-01-01', '2026-12-31'
-);
+// Load Sentinel-2 SR Harmonized collection (atmospherical correction already done)
+var collection = ee.ImageCollection('COPERNICUS/S2_SR_HARMONIZED')
+                   .filterBounds(geometry)
+                   .filterDate('2025-05-01', '2025-06-30')              // Filter by date   
+                   .filter(ee.Filter.lt('CLOUDY_PIXEL_PERCENTAGE', 20)) // Only images with <20% cloud cover
+                   .map(maskS2clouds);                                  // Apply cloud masking
 
+// Print number of images available after filtering
+print('Number of images in collection:', collection.size());
+
+// ==============================================
+// Create a median composite from the collection
+// Useful when the AOI overlaps multiple scenes or frequent cloud cover
+// ==============================================
+var composite = collection.median().clip(geometry);
+
+// ==============================================
+// Visualization on the Map
+// ==============================================
+
+Map.centerObject(geometry, 10); // Zoom to the AOI
+
+// Display the first image of the collection (GEE does this by default)
+Map.addLayer(collection, {
+  bands: ['B4', 'B8', 'B2'],  // True color: Red, Green, Blue
+  min: 0,
+  max: 0.3
+}, 'First image of collection');
+
+// Display the median composite image
+Map.addLayer(composite, {
+  bands: ['B4', 'B8', 'B2'],
+  min: 0,
+  max: 0.3
+}, 'Median composite');
+
+// ==============================================
+// Export to Google Drive
+// ==============================================
+
+// Export the median composite
 Export.image.toDrive({
-  image: img2006.select(['SR_B4', 'SR_B3', 'SR_B2']),
-  description: 'Landsat_2006',
-  folder: 'GEE_exports',
-  fileNamePrefix: 'landsat_2006',
+  image: composite.select(['B4', 'B3', 'B2']),  // Select RGB bands
+  description: 'Sentinel2_Median_Composite',
+  folder: 'GEE_exports',                        // Folder in Google Drive
+  fileNamePrefix: 'sentinel2_median_2020',
   region: geometry,
-  scale: 30,
-  crs: 'EPSG:4326',
-  maxPixels: 1e13
-});
-
-Export.image.toDrive({
-  image: img2016.select(['SR_B4', 'SR_B3', 'SR_B2']),
-  description: 'Landsat_2016',
-  folder: 'GEE_exports',
-  fileNamePrefix: 'landsat_2016',
-  region: geometry,
-  scale: 30,
-  crs: 'EPSG:4326',
-  maxPixels: 1e13
-});
-
-Export.image.toDrive({
-  image: img2026.select(['SR_B4', 'SR_B3', 'SR_B2']),
-  description: 'Landsat_2026',
-  folder: 'GEE_exports',
-  fileNamePrefix: 'landsat_2026',
-  region: geometry,
-  scale: 30,
+  scale: 10,                                    // Sentinel-2 resolution
   crs: 'EPSG:4326',
   maxPixels: 1e13
 });
