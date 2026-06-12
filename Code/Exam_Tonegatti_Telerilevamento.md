@@ -90,7 +90,7 @@ I dati sono stati salvati nella cartella "TELERILEVAMENTO", con il seguente perc
 ### Software R: working directory e librerie
 Il software R è utilizzato per l'analisi delle immagini satellitari.
 
-Innanzitutto, è necessario specificare quali librerie di R verranno utilizzate nell'analisi. In questa ricerca si utilizzeranno le funzioni terra, imageRy e viridis, richiamate dalle seguenti funzioni:
+Innanzitutto, è necessario specificare quali librerie di R verranno utilizzate nell'analisi. In questa ricerca si utilizzeranno le funzioni `terra`, `imageRy` e `viridis`, richiamate dalle seguenti funzioni:
 
 ```r
 library(terra)
@@ -112,12 +112,14 @@ In tal modo, R ha un punto di riferimento per reperire i dati da importare.
 Una volta assegnata la working directory, è possibile importare su R le immagini scaricate tramite la funzione  `rast()`
 
 ```r
-rast()
+p2006<-rast("C:/Users/utente/Desktop/Assegno UNIBO/corsi e schools/TELERILEVAMENTO/landsat_2006.tif")
+p2016<-rast("C:/Users/utente/Desktop/Assegno UNIBO/corsi e schools/TELERILEVAMENTO/landsat_2016.tif")
+p2026<-rast("C:/Users/utente/Desktop/Assegno UNIBO/corsi e schools/TELERILEVAMENTO/landsat_2026.tif")
 ```
 
 ### bande RGB
 
-Per poter visualizzare contemporaneamente le tre bande scelte per ciascuna immagine satellitare, serve utilizzare la funzione `plotRGB()` che permette di associare
+Per poter visualizzare contemporaneamente le tre bande scelte per ciascuna immagine satellitare, serve utilizzare la funzione `plotRGB()` che permette di associare a ogni banda dell'immagine satellitare un colore RGB. In questo caso, alla B4 viene associato il colore rosso, alle B2 il verde, e alla B2 il blu.
 
 ```r
 rgb_2006<-plotRGB(p2006, r=3, g=2, b=1, stretch="lin")
