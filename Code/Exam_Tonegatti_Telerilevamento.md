@@ -75,10 +75,11 @@ Export.image.toDrive({
 });
 ```
 
-Tramite questo script, è stato possibile scaricare le bande B2, B3 e B4 di Landsat, le quali corrispondono rispettivamente alle seguenti bande dello spettro elettromagnetico: XXXX
+Tramite questo script, è stato possibile scaricare le bande B2, B3 e B4 di Landsat, le quali corrispondono rispettivamente alle seguenti bande dello spettro elettromagnetico: 
 + Banda 2 - Blu
 + banda 3 - Verde
 + Banda 4 - Rosso
+
 Tutte e tre le bande hanno una risoluzione pari a 30m.
 
 I dati sono stati salvati nella cartella "TELERILEVAMENTO", con il seguente percorso: 
@@ -110,11 +111,26 @@ In tal modo, R ha un punto di riferimento per reperire i dati da importare.
 ### Script per caricare immagini satellitari su R
 Una volta assegnata la working directory, è possibile importare su R le immagini scaricate tramite la funzione  `rast()`
 
-### Script par.mfrow (mettere accanto le tre immagini) con colorazioni viridis (Magma?); descrizione delle caratteristiche a seconda dei colori che si vedono
-
+```r
+rast()
+```
 
 ### bande RGB
 
+Per poter visualizzare contemporaneamente le tre bande scelte per ciascuna immagine satellitare, serve utilizzare la funzione `plotRGB()` che permette di associare
+
+```r
+rgb_2006<-plotRGB(p2006, r=3, g=2, b=1, stretch="lin")
+rgb_2016<-plotRGB(p2016, r=3, g=2, b=1, stretch="lin")
+rgb_2026<-plotRGB(p2026, r=3, g=2, b=1, stretch="lin")
+```
+
+
+
+### Script par.mfrow (mettere accanto le tre immagini) con colorazioni viridis (Magma?); descrizione delle caratteristiche a seconda dei colori che si vedono
+
+par(mfrow=c(2,2))
+rgb_2006
 
 ### ridgeline (curve della distribuzione dei pixel per banda)
 
