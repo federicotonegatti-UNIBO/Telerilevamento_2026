@@ -10,7 +10,7 @@ L'obiettivo della ricerca è di individuare il cambiamento dei parametri geo-eco
 La metodologia si basa su una analisi geo-ecologica basata su immagini satellitari, elaborate tramite il software open-source R. La tipologia di dati spaziali utilizzati è prevalentemente di tipo raster.
 
 ### Script per scaricare immagini satellitare (2006, 2016, 2026) da GEE
-
+I dat satellitari necessari per l'analisi sono stati scaricati attraverso Google Earth Engine (GEE). 
 
 ### Script per caricare immagini satellitari su R
 
