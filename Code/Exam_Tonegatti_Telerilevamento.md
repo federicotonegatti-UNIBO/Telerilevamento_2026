@@ -87,54 +87,59 @@ I dati sono stati salvati nella cartella "TELERILEVAMENTO", con il seguente perc
 "C:/Users/utente/Desktop/Assegno UNIBO/corsi e schools/TELERILEVAMENTO"
 ```
 
-### Software R: working directory e librerie
+### Importazione immagini satellitari su R
 Il software R è utilizzato per l'analisi delle immagini satellitari.
 
 Innanzitutto, è necessario specificare quali librerie di R verranno utilizzate nell'analisi. In questa ricerca si utilizzeranno le funzioni `terra`, `imageRy` e `viridis`, richiamate dalle seguenti funzioni:
 
 ```r
+# richiamare le librerie
 library(terra)
 library(imageRy)
 library(viridis)
 ```
 Affnchè le funzioni siano lette dal software, è necessario verificare che esse siano già state scaricate attraverso la funzione DOWNLOAD LIBRARY (per scaricarle dal repository CRAN) oppure la funzione GITHUB (per scaricarle tramite Github).
 
-
-Una volta aperto il software, è stata individuata una workin directory attraverso la funzione `setwd()` tramite il seguente script:
+Una volta aperto il software, è stata individuata una working directory attraverso la funzione `setwd()` tramite il seguente script:
 
 ```r
+# definizione working directory
 setwd("C:/Users/utente/Desktop/Assegno UNIBO/corsi e schools/TELERILEVAMENTO")``` #per definire la working directory
 ```
 
-In tal modo, R ha un punto di riferimento per reperire i dati da importare.
-
-### Script per caricare immagini satellitari su R
-Una volta assegnata la working directory, è possibile importare su R le immagini scaricate tramite la funzione  `rast()`
+In tal modo, R ha un punto di riferimento per reperire i dati da importare. Una volta assegnata la working directory, è possibile importare su R le immagini scaricate tramite la funzione  `rast()`
 
 ```r
+#importare su R file raster
 p2006<-rast("C:/Users/utente/Desktop/Assegno UNIBO/corsi e schools/TELERILEVAMENTO/landsat_2006.tif")
 p2016<-rast("C:/Users/utente/Desktop/Assegno UNIBO/corsi e schools/TELERILEVAMENTO/landsat_2016.tif")
 p2026<-rast("C:/Users/utente/Desktop/Assegno UNIBO/corsi e schools/TELERILEVAMENTO/landsat_2026.tif")
 ```
 
-### bande RGB
+### Visualizzazione bande RGB e confronto fra le immagini
 
 Per poter visualizzare contemporaneamente le tre bande scelte per ciascuna immagine satellitare, serve utilizzare la funzione `plotRGB()` che permette di associare a ogni banda dell'immagine satellitare un colore RGB. In questo caso, alla B4 viene associato il colore rosso, alle B2 il verde, e alla B2 il blu.
 
 ```r
+#visualizzo le immagini satellitari in colori RGB
 rgb_2006<-plotRGB(p2006, r=3, g=2, b=1, stretch="lin")
 rgb_2016<-plotRGB(p2016, r=3, g=2, b=1, stretch="lin")
 rgb_2026<-plotRGB(p2026, r=3, g=2, b=1, stretch="lin")
 ```
 
 
-
 ### Script par.mfrow (mettere accanto le tre immagini) con colorazioni viridis (Magma?); descrizione delle caratteristiche a seconda dei colori che si vedono
 
-par(mfrow=c(2,1))
-rgb_2006
-rgb_2016
-rgb_2026
+plottaggio delle singole bande 
+
+```r
+# visualizzo le tre bande per entrambe le immagini satellitari
+par(mfrow=c(2,2))
+plot(p2006[[1]])
+plot(p2006[[2]])
+plot(p2006[[3]])
+```
+
 
 ### ridgeline (curve della distribuzione dei pixel per banda)
 
