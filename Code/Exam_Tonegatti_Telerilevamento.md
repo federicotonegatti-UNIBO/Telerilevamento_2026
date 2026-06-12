@@ -129,8 +129,10 @@ rgb_2026<-plotRGB(p2026, r=3, g=2, b=1, stretch="lin")
 
 ### Script par.mfrow (mettere accanto le tre immagini) con colorazioni viridis (Magma?); descrizione delle caratteristiche a seconda dei colori che si vedono
 
-par(mfrow=c(2,2))
+par(mfrow=c(2,1))
 rgb_2006
+rgb_2016
+rgb_2026
 
 ### ridgeline (curve della distribuzione dei pixel per banda)
 
