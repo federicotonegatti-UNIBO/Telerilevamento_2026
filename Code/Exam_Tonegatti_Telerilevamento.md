@@ -7,7 +7,27 @@ Ne consegue che la superficie del territorio è oggi prevalentemente priva di co
 ## Obiettivi di progetto
 L'obiettivo della ricerca è di individuare il cambiamento dei parametri geo-ecologici negli ultimi venti anni nel Nordeste Paraense.
 ## Metodologia e risultati
+La metodologia si basa su una analisi geo-ecologica basata su immagini satellitari, elaborate tramite il software open-source R. La tipologia di dati spaziali utilizzati è prevalentemente di tipo raster.
 
+### Script per scaricare immagini satellitare (2006, 2016, 2026) da GEE
+
+
+### Script per caricare immagini satellitari su R
+
+
+### Script par.mfrow (mettere accanto le tre immagini) con colorazioni viridis (Magma?); descrizione delle caratteristiche a seconda dei colori che si vedono
+
+
+### bande RGB
+
+
+### ridgeline (curve della distribuzione dei pixel per banda)
+
+
+### calcolo differenza NDVI
+
+
+### barplot differenza NDVI
 
 
 
