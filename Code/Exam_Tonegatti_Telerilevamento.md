@@ -76,7 +76,7 @@ Export.image.toDrive({
 ```
 
 Tramite questo script, è stato possibile scaricare le bande B2, B3 e B4 di Landsat, le quali corrispondono rispettivamente alle seguenti bande dello spettro elettromagnetico: 
-+ Banda 2 - Blu
++ Banda 2 - Blu --> INVCE NO VOGLIO LA BANDA 5 NIR COSI VEDO IL SUOLO NUDO
 + banda 3 - Verde
 + Banda 4 - Rosso
 
