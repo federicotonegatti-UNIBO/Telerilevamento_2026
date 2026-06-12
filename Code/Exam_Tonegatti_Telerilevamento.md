@@ -87,7 +87,7 @@ I dati sono stati salvati nella cartella "TELERILEVAMENTO", con il seguente perc
 "C:/Users/utente/Desktop/Assegno UNIBO/corsi e schools/TELERILEVAMENTO"
 ```
 
-### basi R
+### Software R: working directory e librerie
 Il software R è utilizzato per l'analisi delle immagini satellitari.
 
 Innanzitutto, è necessario specificare quali librerie di R verranno utilizzate nell'analisi. In questa ricerca si utilizzeranno le funzioni terra, imageRy e viridis, richiamate dalle seguenti funzioni:
