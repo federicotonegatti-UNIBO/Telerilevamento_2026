@@ -81,6 +81,17 @@ I dati sono stati salvati nella cartella "TELERILEVAMENTO", con il seguente perc
 
 ### basi R
 Il software R è utilizzato per l'analisi delle immagini satellitari.
+
+Innanzitutto, è necessario specificare quali librerie di R verranno utilizzate nell'analisi. In questa ricerca si utilizzeranno le funzioni terra, imageRy e viridis, richiamate dalle seguenti funzioni:
+
+```r
+library(terra)
+library(imageRy)
+library(viridis)
+```
+Affnchè le funzioni siano lette dal software, è necessario verificare che esse siano già state scaricate attraverso la funzione DOWNLOAD LIBRARY (per scaricarle dal repository CRAN) oppure la funzione GITHUB (per scaricarle tramite Github).
+
+
 Una volta aperto il software, è stata individuata una workin directory attraverso la funzione `setwd()` tramite il seguente script:
 
 ```r
