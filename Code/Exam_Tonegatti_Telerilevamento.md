@@ -76,7 +76,9 @@ Export.image.toDrive({
 ```
 
 Tramite questo script, è stato possibile scaricare le bande B2, B3 e B4 di landsat, le quali corrispondono rispettivamente alle seguenti bande dello spettro elettromagnetico: XXXX
-
++ dd
++ ff
++ fff
 Bands	Wavelength
 (micrometers)	Resolution
 (meters)
