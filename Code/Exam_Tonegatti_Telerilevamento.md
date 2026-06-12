@@ -74,6 +74,9 @@ Export.image.toDrive({
   maxPixels: 1e13
 });
 ```
+
+Tramite questo script, è stato possibile scaricare le bande B2, B3 e B4 di landsat, le quali corrispondono rispettivamente alle seguenti bande dello spettro elettromagnetico: XXXX
+
 I dati sono stati salvati nella cartella "TELERILEVAMENTO", con il seguente percorso: 
 ```
 "C:/Users/utente/Desktop/Assegno UNIBO/corsi e schools/TELERILEVAMENTO"
