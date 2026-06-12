@@ -80,7 +80,8 @@ I dati sono stati salvati nella cartella "TELERILEVAMENTO", con il seguente perc
 ```
 
 ### basi R
-Una volta scaricati i dati e salvati in
+Il software R è utilizzato per l'analisi delle immagini satellitari.
+Una volta aperto il software, è stata individuata una workin directory attraverso la funzione `setwd()`
 
 ### Script per caricare immagini satellitari su R
 
