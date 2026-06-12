@@ -81,10 +81,16 @@ I dati sono stati salvati nella cartella "TELERILEVAMENTO", con il seguente perc
 
 ### basi R
 Il software R è utilizzato per l'analisi delle immagini satellitari.
-Una volta aperto il software, è stata individuata una workin directory attraverso la funzione `setwd()`
+Una volta aperto il software, è stata individuata una workin directory attraverso la funzione `setwd()` tramite il seguente script:
+
+```r
+setwd("C:/Users/utente/Desktop/Assegno UNIBO/corsi e schools/TELERILEVAMENTO")``` #per definire la working directory
+```
+
+In tal modo, R ha un punto di riferimento per reperire i dati da importare.
 
 ### Script per caricare immagini satellitari su R
-
+Una volta assegnata la working directory, è possibile importare su R le immagini scaricate tramite la funzione  `rast()`
 
 ### Script par.mfrow (mettere accanto le tre immagini) con colorazioni viridis (Magma?); descrizione delle caratteristiche a seconda dei colori che si vedono
 
