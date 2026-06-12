@@ -72,7 +72,8 @@ Export.image.toDrive({
   scale: 30,
   crs: 'EPSG:4326',
   maxPixels: 1e13
-});```
+}); ```
+
 
 ### Script per caricare immagini satellitari su R
 
