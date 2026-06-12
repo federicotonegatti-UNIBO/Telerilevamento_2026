@@ -72,8 +72,15 @@ Export.image.toDrive({
   scale: 30,
   crs: 'EPSG:4326',
   maxPixels: 1e13
-}); ```
+});
+```
+I dati sono stati salvati nella cartella "TELERILEVAMENTO", con il seguente percorso: 
+```
+"C:/Users/utente/Desktop/Assegno UNIBO/corsi e schools/TELERILEVAMENTO"
+```
 
+### basi R
+Una volta scaricati i dati e salvati in
 
 ### Script per caricare immagini satellitari su R
 
