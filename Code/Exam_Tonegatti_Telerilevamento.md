@@ -62,13 +62,20 @@ par(mfrow=c(2,2))
 plot(ap_2016[[1]])
 plot(ap_2016[[2]])
 plot(ap_2016[[3]])
+```
 
+<img width="642" height="487" alt="image" src="https://github.com/user-attachments/assets/571e2d9a-cc8c-4da2-a469-d6a1cc17a87d" />
+
+```r
 # visualizzare le tre bande (2026)
 par(mfrow=c(2,2))
 plot(ap_2026[[1]])
 plot(ap_2026[[2]])
 plot(ap_2026[[3]])
 ```
+
+<img width="642" height="487" alt="image" src="https://github.com/user-attachments/assets/fc925d37-57af-4d36-b36d-0abd6e7c985e" />
+
 ### Visualizzazione delle bande RGB e analisi temporale (2016-2026)
 
 Per poter visualizzare in modo sovrapposto le tre bande scelte per ciascuna immagine satellitare, serve utilizzare la funzione `plotRGB()` che permette di associare a ogni banda dell'immagine satellitare un colore RGB. In questo caso, alla B8 viene associato il colore rosso, alla B4 il verde, e alla B3 il blu.
@@ -98,6 +105,7 @@ par(mfrow=c(2,1))
 plot(ndvi2016, col=inferno(100))
 plot(ndvi2026, col=inferno(100))
 ```
+<img width="642" height="487" alt="image" src="https://github.com/user-attachments/assets/035fca29-8bf0-408f-8ad0-de10b787d1a2" />
 
 ### Creazione di una mappa di copertura del suolo attraverso la classificazione
 
@@ -128,6 +136,8 @@ par(mfrow=c(2,1))
 plot(c_2016)
 plot(c_2026)
 ```
+<img width="642" height="487" alt="image" src="https://github.com/user-attachments/assets/cd126216-6c54-4e39-b80a-23aaf2b04296" />
+
 
 Per visualizzare le distribuzioni dei due cluster per entrambe le immagini in due istogrammi, calcoliamo le frequenze relative di ciascuno di esso per entrambe le immagini. Le frequenze corrispndono alle frequenze dei pixel per classe. Grazie alle funizoni `ggplot2()` e `patchwork`, infine, possiamo rappresentare gli istogrammi in modo più dettagliato, inserendo il limite all'asse y pari a 100.
 
@@ -165,6 +175,9 @@ ggplot(tab, aes(x=class, y=perc2026, color=class)) +
   geom_bar(stat="identity", fill="white") + 
   ylim(c(0,100))
 ```
+<img width="642" height="487" alt="image" src="https://github.com/user-attachments/assets/dd148244-e0b6-4297-9f04-2a54f5aeec34" />
+
+<img width="642" height="487" alt="image" src="https://github.com/user-attachments/assets/80a1eef6-d3ec-4629-9b46-3dffa5eb1f1f" />
 
 # Conclusione
 Dall'analisi emerge che la frequenza relativa di copertura forestale dal 2016 al 2026 è scesa di due punti percentuali, a favore delle superifici antropizzate. Da ciò consegue che la rinaturalizzazione del territorio ha subito una leggera battuta di arresto. Ulteirori ricerche potranno individuare se tale risultato sarà da attribuire al recupero di aree "abbandonate" per fini agricoli (fenomeno che potrebbe associarsi ad un lento ripopolamento dell'Appennino grazie al fenomeno dei cosiddetti "neo-rurali") o ad un aumento del consumo di suolo.
