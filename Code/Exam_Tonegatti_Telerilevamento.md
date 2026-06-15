@@ -22,7 +22,7 @@ I dati sono stati salvati come immagini .JPG nella cartella "TELERILEVAMENTO", c
 ### Importazione immagini satellitari su R
 Il software R è utilizzato per l'analisi delle immagini satellitari.
 
-Innanzitutto, è necessario specificare quali librerie di R verranno utilizzate nell'analisi. In questa ricerca si utilizzeranno le funzioni `terra`, `imageRy` e `viridis`, richiamate dalle seguenti funzioni:
+Innanzitutto, è necessario specificare quali librerie di R verranno utilizzate nell'analisi. In questa ricerca si utilizzeranno le funzioni `terra`, `imageRy`, `viridis`, `ggplot2()` e `patchwork` richiamate dalle seguenti funzioni:
 
 ```r
 # richiamare le librerie
