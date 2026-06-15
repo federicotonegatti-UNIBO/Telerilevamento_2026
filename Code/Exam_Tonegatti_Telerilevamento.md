@@ -105,7 +105,7 @@ c_2026<-im.classify(ndvi2026, num_clusters = 2, seed=3)
 Per rappresentare visualizzare le distribuzioni dei due cluster, associamo delle etichette (label) a ciascun cluster attraverso la funzione `levels()` 
 
 ```r
-# mettere delle label: creo una tabella dataframe e una label. viene usata la funzione levels
+# mettere delle label attraverso una tabella dataframe. le label assegnate sono "Human" per le superfici urbanizzate e agricole, e "Forest" per le superici coperte da bosco.
 levels(c_2016) <- data.frame(
   value = c(1, 2),
   label = c("Human", "Forest")
@@ -144,7 +144,7 @@ perc2026
 tab<-data.frame(
   class=c("Forest", "Human"),
   perc2016=c(34,66),
-  perc2026=c(32,67)
+  perc2026=c(32,68)
 )
 
 # rappresentare gli istogrammi tramite la funzione ggplot2()
@@ -159,6 +159,7 @@ ggplot(tab, aes(x=class, y=perc2026, color=class)) +
   ylim(c(0,100))
 ```
 
+Dall'analisi emerge che la frequenza relativa di copertura forestale dal 2016 al 2026 è sceso di due punti percentuali, a favore delle superifici antropizzate. Da ciò consegue che la rinaturalizzazione del territorio ha subito una leggera battuta di arresto. Ulteirori ricerche potranno individuare se tale risultato sarà da attribuire al recupero di aree "abbandonate" per fini agricoli (fenomeno che potrebbe associarsi ad un lento ripopolamento dell'Appennino grazie al fenomeno dei cosiddetti "neo-rurali") o ad un aumento del consumo di suolo.
 
 
 
