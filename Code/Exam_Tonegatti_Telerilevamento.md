@@ -86,6 +86,13 @@ rgb_2026<-plotRGB(NPA_2026, r=3, g=2, b=1, stretch="lin")
 
 ### Creazione di una mappa di copertura del suolo attraverso la classificazione
 
+Per ottenere una mappa di copertura del suolo (land use and land cover map), viene adottata la funzione di imageRy `im.classify()`. Tale funzione permette di individuare gruppi di pixel aventi valori simile di riflettanza, detti cluster. Nel nostro caso, vogliamo distinguere tra aree coperte da foresta e aree prive di copertura. Dal momento che le immagini satellitari in nostro possesso sono fortemente disturbate dalla copertura di nuvole, vengono specificati dalla funzione 3 cluster, in modo da escludere quello associato al disturbo in atmosfera.
+
+c_2016<-(NPA_2016, num_clusters = 3, seed = 3)
+c_2026<-(NPA_2026, num_clusters = 3, seed = 3)
+
+
+
 i seed sono...
 i culster sono i gruppi di pixel che intendiamo creare: nel nostro caso, ne bastano due, in modo da avere una separazione tra le aree deforestate e quelle in cui è presente foresta.
 
