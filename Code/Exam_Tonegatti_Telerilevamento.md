@@ -76,9 +76,12 @@ Per poter visualizzare in modo sovrapposto le tre bande scelte per ciascuna imma
 ```r
 # visualizzare le immagini satellitari in colori RGB
 par(mfrow=c(1,2))
-rgb_2016<-plotRGB(ap_2016, r=1, g=2, b=3, stretch="lin")
-rgb_2026<-plotRGB(ap_2026, r=1, g=2, b=3, stretch="lin")
+rgb_2016<-plotRGB(ap_2016, r=1, g=2, b=3, stretch="lin", main="2016")
+rgb_2026<-plotRGB(ap_2026, r=1, g=2, b=3, stretch="lin", main="2026")
 ```
+
+<img width="642" height="487" alt="image" src="https://github.com/user-attachments/assets/5f7a12e9-54bf-4e22-9c31-3366e77fee35" />
+
 
 ### Calcolo della differenza NDVI
 Il NDVI è un indice di vegetazione è particolarmente utile per monitorare variazioni nella copertura vegetale nel tempo. Tale indice permette di normalizzare le differenze tra immagini acquisite in tempi o condizioni diverse. Si calcola come: NDVI = (NIR − Red) / (NIR + Red)  
