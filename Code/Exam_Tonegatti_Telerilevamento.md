@@ -1,7 +1,10 @@
 # Analisi geo-ecologica dell'Appennino Bolognese
 
 ## Introduzione
-L'Appenino Bolognese è un'area montuosa in provincia di Bologna, caratterizzata da una ricca variabilità geologica ed ecologica. E' costituita da 11 Comuni, rappresentati dall'Unione dei Comuni dell'Appennino Bolognese. A partire dal Dopoguerra, l'area ha subito un forte spopolamento, con la perdita di attività economiche legate all'agricoltura e alla pastorizia. L'abbandono umano di tale territorio (da intendersi come mancanza di gestione), di conseguenza, ha portato a una profonda trafsormazione del paesaggio, con un deciso aumento della superficie boschiva che ha occupato le superfici una volta occupate da pascoli o terre coltivate. 
+L'Appenino Bolognese è un'area montuosa in provincia di Bologna, caratterizzata da una ricca variabilità geologica ed ecologica. E' costituita da 11 Comuni, rappresentati dall'Unione dei Comuni dell'Appennino Bolognese. A partire dal Dopoguerra, l'area ha subito un forte spopolamento, con la perdita di attività economiche legate all'agricoltura e alla pastorizia. L'abbandono umano di tale territorio (da intendersi come mancanza di gestione), di conseguenza, ha portato a una profonda trasformazione del paesaggio, con un deciso aumento della superficie boschiva che ha occupato le superfici una volta occupate da pascoli o terre coltivate. 
+
+<img width="1250" height="1002" alt="2026-01-02-00_00_2026-06-11-23_59_Sentinel-2_L2A_True_color" src="https://github.com/user-attachments/assets/83c49235-05ee-4728-b172-6f330055b7ef" />
+
 
 ## Obiettivi di progetto
 L'obiettivo della ricerca è di individuare il cambiamento della copertura forestale negli ultimi dieci anni (2016-2026) nell'Appennino Bolognese. In tal senso, si intende verificare se nell'ultimo decennio vi è stato un cambiamento nella gestione del territorio, o la tendenza all'abbandono è rimasta costante.
