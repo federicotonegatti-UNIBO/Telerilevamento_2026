@@ -97,10 +97,72 @@ plot(ndvi2026, col=inferno(100))
 
 ### Creazione di una mappa di copertura del suolo attraverso la classificazione
 
-Per ottenere una mappa di copertura del suolo (land use and land cover map), viene adottata la funzione di imageRy `im.classify()`. Tale funzione permette di individuare gruppi di pixel aventi valori simile di riflettanza, detti cluster. Nel nostro caso, vogliamo distinguere tra aree coperte da foresta e aree prive di copertura. Dal momento che le immagini satellitari in nostro possesso sono fortemente disturbate dalla copertura di nuvole, vengono specificati dalla funzione 3 cluster, in modo da escludere quello associato al disturbo in atmosfera.
+Per ottenere una mappa di copertura del suolo (land use and land cover map), viene adottata la funzione di imageRy `im.classify()`. Tale funzione permette di individuare gruppi di pixel aventi valori simile di riflettanza, detti cluster. Nel nostro caso, vogliamo distinguere tra aree coperte da foresta e aree prive di copertura, quindi adotteremo due cluster.
 
-c_2016<-(NPA_2016, num_clusters = 3, seed = 3)
-c_2026<-(NPA_2026, num_clusters = 3, seed = 3)
+```r
+# classificareo le immagini satellitari 
+c_2016<-im.classify(ndvi2016, num_clusters = 2, seed=3)
+c_2026<-im.classify(ndvi2026, num_clusters = 2, seed=3)
+```
+
+Per rappresentare visualizzare le distribuzioni dei due cluster, associamo delle etichette (label) a ciascun cluster attraverso la funzione
+
+```r
+# mettere delle label: creo una tabella dataframe e una label. viene usata la funzione levels
+levels(c_2016) <- data.frame(
+  value = c(1, 2),
+  label = c("Human", "Forest")
+)
+
+levels(c_2026) <- data.frame(
+  value = c(1, 2),
+  label = c("Human", "Forest")
+)
+
+# visualizzare le due immagini satellitari classificate
+par(mfrow=c(2,1))
+plot(c_2016)
+plot(c_2026)
+```
+
+Per visualizzare le distribuzioni dei due cluster per entrambe le immagini in un grafico a barre, calcoliamo le frequenze relative di ciascuno di esso per entrambe le immagini.
+
+```r
+#creo un istogramma:
+# calcolo le frequenze dalle immagini, per ogni classe (frequenze dei pixel per classe)
+f2016<-freq(c_2016)
+f2026<-freq(c_2026)
+#calcolo proporzione, e poi moltiplico * 100 per la percentuale
+prop2016<-f2016$count / sum(f2016$count)
+perc2016<-prop2016*100
+
+prop2026<-f2026$count / sum(f2026$count)
+perc2026<-prop2026*100
+
+perc2016
+perc2026
+
+#ora creo un dataframe per fare degli istorgammi
+tab<-data.frame(
+  class=c("Forest", "Human"),
+  perc2016=c(34,66),
+  perc2026=c(32,67)
+)
+
+#rappresento gli istogrammi tramite la funzione ggplot2()
+par(mfrow=c(2,1))
+
+ggplot(tab, aes(x=class, y=perc2016, color=class)) +
+  geom_bar(stat="identity", fill="white") +
+  ylim(c(0,100))
+  
+ggplot(tab, aes(x=class, y=perc2026, color=class)) + 
+  geom_bar(stat="identity", fill="white") + 
+  ylim(c(0,100))
+```
+
+
+
 
 
 
