@@ -78,8 +78,9 @@ rgb_2026<-plotRGB(ap_2026, r=1, g=2, b=3, stretch="lin")
 ```
 
 ### Calcolo della differenza NDVI
-La NDVI serve per individuare il cambiamento di copertura forestale. 
-(NIR-red)/(nir+red) standardizzo sulla somma: NIR [[3]], red [[2]]
+Il NDVI è un indice di vegetazione è particolarmente utile per monitorare variazioni nella copertura vegetale nel tempo. Tale indice permette di normalizzare le differenze tra immagini acquisite in tempi o condizioni diverse. Si calcola come: NDVI = (NIR − Red) / (NIR + Red)  
+
+I valori ottenuti variano tra -1 e +1: valori vicini a +1 indicano vegetazione densa e sana, mentre valori prossimi a 0 o negativi indicano suolo nudo, rocce o acqua.
 
 ```r
 # calcolare NDVI: ricorda che NIR [[3]], rosso [[2]]
@@ -94,7 +95,7 @@ plot(ndvi2026, col=inferno(100))
 
 ### Creazione di una mappa di copertura del suolo attraverso la classificazione
 
-Per ottenere una mappa di copertura del suolo (land use and land cover map), viene adottata la funzione di imageRy `im.classify()`. Tale funzione permette di individuare gruppi di pixel aventi valori simile di riflettanza, detti cluster. Nel nostro caso, vogliamo distinguere tra aree coperte da foresta e aree prive di copertura, quindi adotteremo due cluster.
+Per ottenere una mappa di copertura del suolo (Land Use Land Cover map - LULC), viene adottata la funzione di imageRy `im.classify()`. Tale funzione permette di individuare gruppi di pixel aventi valori simile di riflettanza, detti cluster. Nel nostro caso, vogliamo distinguere tra aree coperte da foresta e aree prive di copertura, quindi adotteremo due cluster.
 
 ```r
 # classificareo le immagini satellitari 
