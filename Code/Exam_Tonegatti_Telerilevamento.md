@@ -159,30 +159,9 @@ ggplot(tab, aes(x=class, y=perc2026, color=class)) +
   ylim(c(0,100))
 ```
 
+# Conclusione
 Dall'analisi emerge che la frequenza relativa di copertura forestale dal 2016 al 2026 è sceso di due punti percentuali, a favore delle superifici antropizzate. Da ciò consegue che la rinaturalizzazione del territorio ha subito una leggera battuta di arresto. Ulteirori ricerche potranno individuare se tale risultato sarà da attribuire al recupero di aree "abbandonate" per fini agricoli (fenomeno che potrebbe associarsi ad un lento ripopolamento dell'Appennino grazie al fenomeno dei cosiddetti "neo-rurali") o ad un aumento del consumo di suolo.
 
-
-
-
-
-i seed sono...
-i culster sono i gruppi di pixel che intendiamo creare: nel nostro caso, ne bastano due, in modo da avere una separazione tra le aree deforestate e quelle in cui è presente foresta.
-
-#classificazione per creare una land cover map
-p2006_c<-im.classify(p2006, seed=42, num_clusters = 3) #ci nasce una land cover map
-
-
-
-pacchetti usati in R
-
-```library(terra) #per gestire dati spaziali``` 
-
-importazione dei dati tramite `setwd()`
-
-```r
-setwd("CimageRysetwd("C:/Users/utente/Desktop/Assegno UNIBO/corsi e schools/TELERILEVAMENTO")```
-getwd()  #per cdefnirie la working directory
-```
 
 ## Plottaggio delle singole bande
 Le singole bande sono state plottate usando un multiframe con `par=mfrow`
