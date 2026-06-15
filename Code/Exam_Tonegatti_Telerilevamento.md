@@ -56,23 +56,24 @@ plottaggio delle singole bande
 ```r
 # visualizzo le tre bande per entrambe le immagini satellitari
 par(mfrow=c(2,2))
-plot(p2016[[1]])
-plot(p2016[[2]])
-plot(p2016[[3]])
+plot(NPA_2016[[1]])
+plot(NPA_2016[[2]])
+plot(NPA_2016[[3]])
 
 par(mfrow=c(2,2))
-plot(p2026[[1]])
-plot(p2026[[2]])
-plot(p2026[[3]])
+plot(NPA_2026[[1]])
+plot(NPA_2026[[2]])
+plot(NPA_2026[[3]])
 ```
 ### Visualizzazione bande RGB e confronto fra le immagini
 
-Per poter visualizzare contemporaneamente le tre bande scelte per ciascuna immagine satellitare, serve utilizzare la funzione `plotRGB()` che permette di associare a ogni banda dell'immagine satellitare un colore RGB. In questo caso, alla B4 viene associato il colore rosso, alle B2 il verde, e alla B2 il blu.
+Per poter visualizzare contemporaneamente le tre bande scelte per ciascuna immagine satellitare, serve utilizzare la funzione `plotRGB()` che permette di associare a ogni banda dell'immagine satellitare un colore RGB. In questo caso, alla B8 viene associato il colore rosso, alle B4 il verde, e alla B3 il blu.
 
 ```r
 #visualizzo le immagini satellitari in colori RGB
-rgb_2016<-plotRGB(p2016, r=3, g=2, b=1, stretch="lin")
-rgb_2026<-plotRGB(p2026, r=3, g=2, b=1, stretch="lin")
+par(mfrow=c(1,2))
+rgb_2016<-plotRGB(NPA_2016, r=3, g=2, b=1, stretch="lin")
+rgb_2026<-plotRGB(NPA_2026, r=3, g=2, b=1, stretch="lin")
 ```
 
 ### ridgeline (curve della distribuzione dei pixel per banda)
