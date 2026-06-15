@@ -49,30 +49,31 @@ p2016<-rast("C:/Users/utente/Desktop/Assegno UNIBO/corsi e schools/TELERILEVAMEN
 p2026<-rast("C:/Users/utente/Desktop/Assegno UNIBO/corsi e schools/TELERILEVAMENTO/NP_2026.jpg")
 ```
 
-### Visualizzazione bande RGB e confronto fra le immagini
-
-Per poter visualizzare contemporaneamente le tre bande scelte per ciascuna immagine satellitare, serve utilizzare la funzione `plotRGB()` che permette di associare a ogni banda dell'immagine satellitare un colore RGB. In questo caso, alla B4 viene associato il colore rosso, alle B2 il verde, e alla B2 il blu.
-
-```r
-#visualizzo le immagini satellitari in colori RGB
-rgb_2006<-plotRGB(p2006, r=3, g=2, b=1, stretch="lin")
-rgb_2016<-plotRGB(p2016, r=3, g=2, b=1, stretch="lin")
-rgb_2026<-plotRGB(p2026, r=3, g=2, b=1, stretch="lin")
-```
-
-
-### Script par.mfrow (mettere accanto le tre immagini) con colorazioni viridis (Magma?); descrizione delle caratteristiche a seconda dei colori che si vedono
+### Visualizzazione delle tre singole bande
 
 plottaggio delle singole bande 
 
 ```r
 # visualizzo le tre bande per entrambe le immagini satellitari
 par(mfrow=c(2,2))
-plot(p2006[[1]])
-plot(p2006[[2]])
-plot(p2006[[3]])
-```
+plot(p2016[[1]])
+plot(p2016[[2]])
+plot(p2016[[3]])
 
+par(mfrow=c(2,2))
+plot(p2026[[1]])
+plot(p2026[[2]])
+plot(p2026[[3]])
+```
+### Visualizzazione bande RGB e confronto fra le immagini
+
+Per poter visualizzare contemporaneamente le tre bande scelte per ciascuna immagine satellitare, serve utilizzare la funzione `plotRGB()` che permette di associare a ogni banda dell'immagine satellitare un colore RGB. In questo caso, alla B4 viene associato il colore rosso, alle B2 il verde, e alla B2 il blu.
+
+```r
+#visualizzo le immagini satellitari in colori RGB
+rgb_2016<-plotRGB(p2016, r=3, g=2, b=1, stretch="lin")
+rgb_2026<-plotRGB(p2026, r=3, g=2, b=1, stretch="lin")
+```
 
 ### ridgeline (curve della distribuzione dei pixel per banda)
 
