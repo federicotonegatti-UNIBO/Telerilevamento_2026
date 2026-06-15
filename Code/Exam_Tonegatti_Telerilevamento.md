@@ -1,10 +1,10 @@
 # Analisi geo-ecologica dell'Appennino Bolognese
 
 ## Introduzione
-L'Appenino Bolognese è un'area montuosa in provincia di Bologna, caratterizzata da una ricca variabilità geologica ed ecologica. E' costituita da 11 Comuni, rappresentati dall'Unione dei Comuni dell'Appennino Bolognese. A partire dal Dopoguerra, l'area ha subito un forte spopolamento, con la perdita di attività economiche legate all'agricoltura e alla pastorizia. L'abbandono umano di tale territorio, di conseguenza, ha portato a una profonda trafsormazione del paesaggio, con un deciso aumento della superficie boschiva che ha occupato le superfici una volta occupate da pascoli o terre coltivate. 
+L'Appenino Bolognese è un'area montuosa in provincia di Bologna, caratterizzata da una ricca variabilità geologica ed ecologica. E' costituita da 11 Comuni, rappresentati dall'Unione dei Comuni dell'Appennino Bolognese. A partire dal Dopoguerra, l'area ha subito un forte spopolamento, con la perdita di attività economiche legate all'agricoltura e alla pastorizia. L'abbandono umano di tale territorio (da intendersi come mancanza di gestione), di conseguenza, ha portato a una profonda trafsormazione del paesaggio, con un deciso aumento della superficie boschiva che ha occupato le superfici una volta occupate da pascoli o terre coltivate. 
 
 ## Obiettivi di progetto
-L'obiettivo della ricerca è di individuare il cambiamento della copertura forestale negli ultimi dieci anni (2016-2026) nell'Appennino Bolognese. In tal senso, si intende verificare se nell'ultimo decennio vi è stato un cambiamento nella gestione del territorio, o la tendenza di abbandono e non-gestione è rimasta costante.
+L'obiettivo della ricerca è di individuare il cambiamento della copertura forestale negli ultimi dieci anni (2016-2026) nell'Appennino Bolognese. In tal senso, si intende verificare se nell'ultimo decennio vi è stato un cambiamento nella gestione del territorio, o la tendenza all'abbandono è rimasta costante.
 
 ## Metodologia e risultati
 La metodologia si basa su una analisi geo-ecologica basata su immagini satellitari, elaborate tramite il software open-source R. La tipologia di dati spaziali utilizzati è prevalentemente di tipo raster.
@@ -160,8 +160,5 @@ ggplot(tab, aes(x=class, y=perc2026, color=class)) +
 ```
 
 # Conclusione
-Dall'analisi emerge che la frequenza relativa di copertura forestale dal 2016 al 2026 è sceso di due punti percentuali, a favore delle superifici antropizzate. Da ciò consegue che la rinaturalizzazione del territorio ha subito una leggera battuta di arresto. Ulteirori ricerche potranno individuare se tale risultato sarà da attribuire al recupero di aree "abbandonate" per fini agricoli (fenomeno che potrebbe associarsi ad un lento ripopolamento dell'Appennino grazie al fenomeno dei cosiddetti "neo-rurali") o ad un aumento del consumo di suolo.
+Dall'analisi emerge che la frequenza relativa di copertura forestale dal 2016 al 2026 è scesa di due punti percentuali, a favore delle superifici antropizzate. Da ciò consegue che la rinaturalizzazione del territorio ha subito una leggera battuta di arresto. Ulteirori ricerche potranno individuare se tale risultato sarà da attribuire al recupero di aree "abbandonate" per fini agricoli (fenomeno che potrebbe associarsi ad un lento ripopolamento dell'Appennino grazie al fenomeno dei cosiddetti "neo-rurali") o ad un aumento del consumo di suolo.
 
-
-## Plottaggio delle singole bande
-Le singole bande sono state plottate usando un multiframe con `par=mfrow`
