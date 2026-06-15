@@ -1,10 +1,14 @@
-# Analisi geo-ecologica Nordeste Paraense
+# Analisi geo-ecologica dell'Appennino Bolognese
 
 ## Introduzione
+L'Appenino Bolognese è un'area montuosa in provincia di Bologna, caratterizzata da XXXX. E' costituita da XX Comuni, rappresentati dall'Unione dei Comuni dell'Appennino Bolognese.
+A partire dal Dopoguerra, l'area ha subito un forte spopolamento, con la perdita di attività economiche legate all'agricoltura e alla pastorizia. L'abbandono umano di tale territorio, di conseguenza, ha portato a una profonda trafsormazione del paesaggio, con un deciso aumento della superficie boschiva che ha occupato le superfici una volta occupate da pascoli o terre coltivate. 
+
+
 Il Nordeste Paraense è una area geografica  presso lo stato brasiliano del Parà. A livello ecologico, la regione si distingue per la presenza di foresta tropicale forteente disturbata dall'attività antropica a partire dall'inizio del Novecento, prima con la costruzione della linea ferroviaria Belem-Bragança e successivamente con lo sviluppo di alcuni assi stradali che hanno accelerato il processo di deforestazione. Ne consegue che la superficie del territorio è oggi prevalentemente priva di copertura forestale, sostituita da aree agricole per la produzione di açaì e olio di palma, e da pascoli per la produzione di carne. Le aree coperte da foresta sono in uno stato di forte frammentazione e scorsa connettività, le quali aumentano la loro vulnerabilità.
 
 ## Obiettivi di progetto
-L'obiettivo della ricerca è di individuare il cambiamento dei parametri geo-ecologici negli ultimi dieci anni (2016-2026) nel Nordeste Paraense.
+L'obiettivo della ricerca è di individuare il cambiamento della copertura forestale negli ultimi dieci anni (2016-2026) nell'Appennino Bolognese.
 
 ## Metodologia e risultati
 La metodologia si basa su una analisi geo-ecologica basata su immagini satellitari, elaborate tramite il software open-source R. La tipologia di dati spaziali utilizzati è prevalentemente di tipo raster.
