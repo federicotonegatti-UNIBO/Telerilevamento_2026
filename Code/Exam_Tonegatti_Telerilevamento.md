@@ -1,8 +1,7 @@
 # Analisi geo-ecologica Nordeste Paraense
 
 ## Introduzione
-Il Nordeste Paraense è una area geografica planiziale presso lo stato brasiliano del Parà. A livello ecologico, la regione si distingue per la presenza di foresta tropicale forteente disturbata dall'attività antropica a partire dagli anni XXX.
-Ne consegue che la superficie del territorio è oggi prevalentemente priva di copertura forestale, sostituita da aree agricole per la produzione di açaì e olio di palma, e di pascoli per la produzione di carne. Le aree coperte da foresta sono invece suddivisione in piccole patch, scarsamente collegate fra di loro, che aumentano la loro vulnerabilità.
+Il Nordeste Paraense è una area geografica  presso lo stato brasiliano del Parà. A livello ecologico, la regione si distingue per la presenza di foresta tropicale forteente disturbata dall'attività antropica a partire dall'inizio del Novecento, prima con la costruzione della linea ferroviaria Belem-Bragança e successivamente con lo sviluppo di alcuni assi stradali che hanno accelerato il processo di deforestazione. Ne consegue che la superficie del territorio è oggi prevalentemente priva di copertura forestale, sostituita da aree agricole per la produzione di açaì e olio di palma, e da pascoli per la produzione di carne. Le aree coperte da foresta sono in uno stato di forte frammentazione e scorsa connettività, le quali aumentano la loro vulnerabilità.
 
 ## Obiettivi di progetto
 L'obiettivo della ricerca è di individuare il cambiamento dei parametri geo-ecologici negli ultimi dieci anni (2016-2026) nel Nordeste Paraense.
@@ -65,9 +64,9 @@ plot(NPA_2026[[1]])
 plot(NPA_2026[[2]])
 plot(NPA_2026[[3]])
 ```
-### Visualizzazione delle bande RGB e confronto fra le immagini 2016 e 2026
+### Visualizzazione delle bande RGB e analisi temporale (2016-2026)
 
-Per poter visualizzare contemporaneamente le tre bande scelte per ciascuna immagine satellitare, serve utilizzare la funzione `plotRGB()` che permette di associare a ogni banda dell'immagine satellitare un colore RGB. In questo caso, alla B8 viene associato il colore rosso, alle B4 il verde, e alla B3 il blu.
+Per poter visualizzare in modo sovrapposto le tre bande scelte per ciascuna immagine satellitare, serve utilizzare la funzione `plotRGB()` che permette di associare a ogni banda dell'immagine satellitare un colore RGB. In questo caso, alla B8 viene associato il colore rosso, alla B4 il verde, e alla B3 il blu.
 
 ```r
 #visualizzo le immagini satellitari in colori RGB
