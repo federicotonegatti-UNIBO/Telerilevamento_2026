@@ -16,7 +16,7 @@ I dati satellitari necessari per l'analisi sono stati scaricati attraverso il po
 Per entrambi i periodi di riferimento, è stata seleionata la visualizzazione "False colours", la quale consiste nella visualizzazione RGB delle bande B8 (vicino infrarosso, o NIR), B4 (rosso) e B3 (blu) di Landsat-2.
 Tutte e tre le bande hanno una risoluzione pari a 30m.
 
-I dati sono stati salvati come immagini .JPEG nella cartella "TELERILEVAMENTO", con il seguente percorso: 
+I dati sono stati salvati come immagini .JPG nella cartella "TELERILEVAMENTO", con il seguente percorso: 
 ```
 "C:/Users/utente/Desktop/Assegno UNIBO/corsi e schools/TELERILEVAMENTO"
 ```
@@ -45,9 +45,8 @@ In tal modo, R ha un punto di riferimento per reperire i dati da importare. Una 
 
 ```r
 #importare su R file raster
-p2006<-rast("C:/Users/utente/Desktop/Assegno UNIBO/corsi e schools/TELERILEVAMENTO/landsat_2006.tif")
-p2016<-rast("C:/Users/utente/Desktop/Assegno UNIBO/corsi e schools/TELERILEVAMENTO/landsat_2016.tif")
-p2026<-rast("C:/Users/utente/Desktop/Assegno UNIBO/corsi e schools/TELERILEVAMENTO/landsat_2026.tif")
+p2016<-rast("C:/Users/utente/Desktop/Assegno UNIBO/corsi e schools/TELERILEVAMENTO/NP_2016.jpg")
+p2026<-rast("C:/Users/utente/Desktop/Assegno UNIBO/corsi e schools/TELERILEVAMENTO/NP_2026.jpg")
 ```
 
 ### Visualizzazione bande RGB e confronto fra le immagini
