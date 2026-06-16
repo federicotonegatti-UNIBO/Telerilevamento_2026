@@ -89,14 +89,13 @@ rgb_2026<-plotRGB(ap_2026, r=1, g=2, b=3, stretch="lin", main="2026")
 
 <img width="642" height="487" alt="image" src="https://github.com/user-attachments/assets/5f7a12e9-54bf-4e22-9c31-3366e77fee35" />
 
-
 ### Calcolo della differenza NDVI
-Il NDVI è un indice di vegetazione è particolarmente utile per monitorare variazioni nella copertura vegetale nel tempo. Tale indice permette di normalizzare le differenze tra immagini acquisite in tempi o condizioni diverse. Si calcola come: NDVI = (NIR − Red) / (NIR + Red)  
+Il NDVI è un indice di vegetazione che risulta particolarmente utile per monitorare variazioni nella copertura vegetale nel tempo. Tale indice permette di normalizzare le differenze tra immagini acquisite in tempi o condizioni diverse. Si calcola come: NDVI = (NIR − Red) / (NIR + Red)  
 
 I valori ottenuti variano tra -1 e +1: valori vicini a +1 indicano vegetazione densa e sana, mentre valori prossimi a 0 o negativi indicano suolo nudo, rocce o acqua.
 
 ```r
-# calcolare NDVI: ricorda che NIR [[3]], rosso [[2]]
+# calcolare NDVI: ricorda che B8 NIR = [[3]]; B4 rosso = [[2]]
 ndvi2016<-(ap_2016[[3]]-ap_2016[[2]])/(ap_2016[[3]]+ap_2016[[2]])
 ndvi2026<-(ap_2026[[3]]-ap_2026[[2]])/(ap_2026[[3]]+ap_2026[[2]])
 
