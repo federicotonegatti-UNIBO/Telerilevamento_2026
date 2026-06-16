@@ -1,7 +1,7 @@
 # Analisi geo-ecologica dell'Appennino Bolognese
 
 ## Introduzione
-L'Appenino Bolognese è un'area montuosa in provincia di Bologna, caratterizzata da una ricca variabilità geologica ed ecologica. E' costituita da 11 Comuni, rappresentati dall'Unione dei Comuni dell'Appennino Bolognese. A partire dal Dopoguerra, l'area ha subito un forte spopolamento, con la perdita di attività economiche legate all'agricoltura e alla pastorizia. L'abbandono umano di tale territorio (da intendersi come mancanza di gestione), di conseguenza, ha portato a una profonda trasformazione del paesaggio, con un deciso aumento della superficie boschiva che ha occupato le superfici una volta occupate da pascoli o terre coltivate. 
+L'Appenino Bolognese è un'area montuosa in provincia di Bologna, caratterizzata da una ricca variabilità geologica ed ecologica. E' costituita da 11 Comuni, rappresentati dall'Unione dei Comuni dell'Appennino Bolognese. A partire dal Dopoguerra, l'area ha subito un forte spopolamento, con la perdita di attività economiche legate all'agricoltura e alla pastorizia. L'abbandono umano di tale territorio (da intendersi come mancanza di gestione), di conseguenza, ha portato a una profonda trasformazione del paesaggio, con un deciso aumento della superficie boschiva che ha occupato le superfici una volta occupate da pascoli o terre coltivate. L'assenza di gestione di tali boschi, però, comporta un aumento del rischio idrogeologico, dovuto anche al fragile assetto del territorio, e del rischio di incendio.
 
 <img width="1250" height="1002" alt="2026-01-02-00_00_2026-06-11-23_59_Sentinel-2_L2A_True_color" src="https://github.com/user-attachments/assets/83c49235-05ee-4728-b172-6f330055b7ef" />
 
@@ -135,14 +135,14 @@ plot(c_2026)
 <img width="642" height="487" alt="image" src="https://github.com/user-attachments/assets/cd126216-6c54-4e39-b80a-23aaf2b04296" />
 
 
-Per visualizzare le distribuzioni dei due cluster per entrambe le immagini in due istogrammi, calcoliamo le frequenze relative di ciascuno di esso per entrambe le immagini. Le frequenze corrispndono alle frequenze dei pixel per classe. Grazie alle funizoni `ggplot2()` e `patchwork`, infine, possiamo rappresentare gli istogrammi in modo più dettagliato, inserendo il limite all'asse y pari a 100.
+Per visualizzare le distribuzioni dei due cluster per entrambe le immagini in due istogrammi, calcoliamo le frequenze relative di ciascuno di esso per entrambe le immagini. Le frequenze corrispondono alle frequenze dei pixel per classe. Grazie alle funizoni `ggplot2()` e `patchwork`, infine, possiamo rappresentare gli istogrammi in modo più dettagliato, inserendo il limite all'asse y pari a 100.
 
 ```r
 # calcolare le frequenze dalle immagini, per ogni classe
 f2016<-freq(c_2016)
 f2026<-freq(c_2026)
 
-# calcolare la proporzione, e poi moltiplicare * 100 per la percentuale
+# calcolare la proporzione, e poi moltiplicare * 100 per ottenere la percentuale
 prop2016<-f2016$count / sum(f2016$count)
 perc2016<-prop2016*100
 
