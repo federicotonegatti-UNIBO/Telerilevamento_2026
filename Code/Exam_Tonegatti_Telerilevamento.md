@@ -17,7 +17,7 @@ I dati satellitari necessari per l'analisi sono stati scaricati attraverso il po
 
 Per entrambi i periodi di riferimento, sono state scaricate le seguenti bande spettrali:  B8 (vicino infrarosso, o NIR), B4 (rosso) e B3 (verde) di Landsat-2. Le immagini relative a tutte e tre le bande hanno una risoluzione pari a 30m.
 
-I dati sono stati salvati come immagini .JPG nella cartella "TELERILEVAMENTO", con il seguente percorso: 
+I dati sono stati salvati come immagini .TIFF nella cartella "TELERILEVAMENTO", con il seguente percorso: 
 ```
 "C:/Users/utente/Desktop/Assegno UNIBO/corsi e schools/TELERILEVAMENTO"
 ```
