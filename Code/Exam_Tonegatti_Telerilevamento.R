@@ -1,4 +1,4 @@
-# APPENNINO BOLOGNESE
+# Codice R per analisi geo-ecologica dell'Appennino Bolognese (2016-2026)
 
 library(terra)
 library(viridis)
