@@ -53,7 +53,6 @@ p2026<-rast("C:/Users/utente/Desktop/Assegno UNIBO/corsi e schools/TELERILEVAMEN
 ```
 
 ### Visualizzazione delle tre singole bande
-
 Per effettuare il plottaggio delle singole bande, è necessario effettuare un subset richiamando le bande attraverso parentesi quadre `[[]]`. Inoltre, per poter visualizzare le tre immagini satellitari, ciascuna corrsipondente a una specifica banda, è necessario utilizzare la funzione `par(mfrow=c())`. In alternativa, è possibile usare la funzione `im.multiframe` di imageRy.
 
 ```r
@@ -77,7 +76,6 @@ plot(ap_2026[[3]])
 <img width="642" height="487" alt="image" src="https://github.com/user-attachments/assets/fc925d37-57af-4d36-b36d-0abd6e7c985e" />
 
 ### Visualizzazione delle bande RGB e analisi temporale (2016-2026)
-
 Per poter visualizzare in modo sovrapposto le tre bande scelte per ciascuna immagine satellitare, serve utilizzare la funzione `plotRGB()` che permette di associare a ogni banda dell'immagine satellitare un colore RGB. In questo caso, alla B8 viene associato il colore rosso, alla B4 il verde, e alla B3 il blu.
 
 ```r
@@ -107,13 +105,12 @@ plot(ndvi2026, col=inferno(100))
 <img width="642" height="487" alt="image" src="https://github.com/user-attachments/assets/035fca29-8bf0-408f-8ad0-de10b787d1a2" />
 
 ### Creazione di una mappa di copertura del suolo attraverso la classificazione
-
 Per ottenere una mappa di copertura del suolo (Land Use Land Cover map - LULC), viene adottata la funzione di imageRy `im.classify()`. Tale funzione permette di individuare gruppi di pixel aventi valori simile di riflettanza, detti cluster. Nel nostro caso, vogliamo distinguere tra aree coperte da foresta e aree prive di copertura, quindi adotteremo due cluster.
 
 ```r
 # classificareo le immagini satellitari 
-c_2016<-im.classify(ndvi2016, num_clusters = 2, seed=3)
-c_2026<-im.classify(ndvi2026, num_clusters = 2, seed=3)
+c_2016<-im.classify(ap_2016, num_clusters = 2, seed=3)
+c_2026<-im.classify(ap_2026, num_clusters = 2, seed=3)
 ```
 
 Per rappresentare visualizzare le distribuzioni dei due cluster, associamo delle etichette (label) a ciascun cluster attraverso la funzione `levels()` 
